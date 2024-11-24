@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Mirror</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+        #output {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            white-space: pre-wrap;
+            height: 500px;
+            overflow-y: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        #output::-webkit-scrollbar {
+            width: 8px;
+        }
+        #output::-webkit-scrollbar-track {
+            background: #000;
+        }
+        #output::-webkit-scrollbar-thumb {
+            background: #0f0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+        let lastInput = '';
+        let lastLineCount = 0;
+        // Load history on page load
+        fetch('/history')
+            .then(response => response.json())
+            .then(history => {
+                output.textContent = '';  // Clear any existing content
+                history.forEach(entry => {
+                    if (entry.type === 'output') {
+                        output.textContent += entry.text;
+                    } else if (entry.type === 'input') {
+                        output.textContent += '>>> ' + entry.text + '\n';
+                    }
+                });
+                output.scrollTop = output.scrollHeight;
+                lastLineCount = output.textContent.split('\n').length;
+            });
+
+        const eventSource = new EventSource('/stream');
+
+        eventSource.onmessage = function(event) {
+            if (event.data.trim()) {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'output') {
+                    output.textContent += data.text;
+                } else if (data.type === 'input_update') {
+                    // Get all lines
+                    const lines = output.textContent.split('\n');
+                    
+                    // Update the last line if it's a prompt, or add a new line
+                    if (lines[lines.length - 1].trim().startsWith('>>>')) {
+                        lines[lines.length - 1] = '>>> ' + data.text;
+                    } else {
+                        lines.push('>>> ' + data.text);
+                    }
+                    output.textContent = lines.join('\n');
+                }
+                
+                output.scrollTop = output.scrollHeight;
+                lastLineCount = output.textContent.split('\n').length;
+            }
+        };
+
+        eventSource.onerror = function(event) {
+            console.error("EventSource failed:", event);
+            if (eventSource.readyState === EventSource.CLOSED) {
+                output.textContent += "\n[Connection closed]\n";
+            }
+        };
+
+        // Clean up on page unload
+        window.addEventListener('beforeunload', () => {
+            eventSource.close();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "memos"
+version = "0.1.0"
+description = "Your memory operating system"
+authors = ["Belinda Mo"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+Flask = "^3.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
