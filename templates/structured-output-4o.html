@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structured Output 4o - Pydantic Model Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Structured Output 4o - Pydantic Model Generator</h1>
+        
+        <h2>Generate a New Model</h2>
+        <textarea id="query" placeholder="Enter your query to generate a Pydantic model"></textarea>
+        <button onclick="generateModel()">Generate Model</button>
+        <div id="loading" class="loading">Generating model...</div>
+        
+        <h2>Generated Model</h2>
+        <pre id="generatedModel"></pre>
+        
+        <h2>Saved Models</h2>
+        <ul id="savedModels"></ul>
+    </div>
+
+    <script>
+        function generateModel() {
+            const query = document.getElementById('query').value;
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+            fetch('/structured-output-4o/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({query: query}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('generatedModel').textContent = data.model_code;
+                loadSavedModels();
+                loading.style.display = 'none';
+            });
+        }
+        function loadSavedModels() {
+            fetch('/structured-output-4o/saved_models')
+            .then(response => response.json())
+            .then(models => {
+                const ul = document.getElementById('savedModels');
+                ul.innerHTML = '';
+                models.forEach(model => {
+                    const li = document.createElement('li');
+                    li.textContent = `${model}`;
+                    ul.appendChild(li);
+                });
+            });
+        }
+
+        // Load saved models on page load
+        loadSavedModels();
+    </script>
+</body>
+</html>

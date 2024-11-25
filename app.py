@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request, jsonify
 import sys
 import queue
 import threading
@@ -6,6 +6,8 @@ import json
 import time
 from collections import deque
 import contextlib
+import os
+from structured_output_4o.structured_output_4o import main as structured_output_4o_main
 
 app = Flask(__name__)
 
@@ -39,6 +41,7 @@ class StreamCapture:
 
 stream_capture = StreamCapture(output_queue)
 
+# ~~~ ROUTES ~~~
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -61,6 +64,32 @@ def stream():
                 break
     
     return Response(generate(), mimetype='text/event-stream')
+
+@app.route('/structured-output-4o')
+def structured_output_4o():
+    return render_template('structured-output-4o.html')
+
+@app.route('/structured-output-4o/generate', methods=['POST'])
+def generate_model():
+    query = request.json['query']
+    generated_model = structured_output_4o_main(query)
+    response = jsonify({
+        'model_code': generated_model.model_code,
+        'model_name': generated_model.model_name,
+        'model_description': generated_model.model_description
+    })
+    return response
+
+@app.route('/structured-output-4o/saved_models')
+def get_saved_models():
+    models_dir = 'structured_output_4o/so_models'
+    models = []
+    for f in os.listdir(models_dir):
+        if f.endswith('.py'):
+            model_name = f.split('.')[0]
+            models.append(model_name)
+    return jsonify(models)
+
 
 def run_flask():
     app.run(debug=False, threaded=True, port=5000)
