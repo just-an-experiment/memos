@@ -26,8 +26,8 @@ The main module can be imported to:
 ## API
 
 ```python
-from structured_output_40 import generate_model
+from structured_output_4o import main as structured_output_4o_main
 
-# Generate a model from query
-model = generate_model("your query here")
+# Generate and save a model from query
+model = structured_output_4o_main("your query here")
 ```

@@ -7,9 +7,96 @@ import time
 from collections import deque
 import contextlib
 import os
-from structured_output_4o.structured_output_4o import main as structured_output_4o_main
+from _1_structured_output_4o.structured_output_4o import main as structured_output_4o_main
+from _2_structured_output_4o_with_examples.structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
 
 app = Flask(__name__)
+
+def run_flask():
+    app.run(debug=False, threaded=True, port=5000)
+
+# ~~~ ROUTES ~~~
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+### 0
+@app.route('/history')
+def get_history():
+    return json.dumps([entry for entry in terminal_history])
+
+@app.route('/stream')
+def stream():
+    def generate():
+        while True:
+            try:
+                output = output_queue.get(timeout=1)
+                yield f"data: {json.dumps(output)}\n\n"
+            except queue.Empty:
+                yield f"data: \n\n"
+            except Exception as e:
+                print(f"Stream error: {str(e)}")
+                break
+    
+    return Response(generate(), mimetype='text/event-stream')
+
+### 1
+
+@app.route('/structured-output-4o')
+def structured_output_4o():
+    return render_template('structured-output-4o.html')
+
+@app.route('/structured-output-4o/generate', methods=['POST'])
+def generate_model():
+    query = request.json['query']
+    generated_model = structured_output_4o_main(query)
+    response = jsonify({
+        'model_code': generated_model.model_code,
+        'model_name': generated_model.model_name,
+        'model_description': generated_model.model_description
+    })
+    return response
+
+@app.route('/structured-output-4o/saved_models')
+def get_saved_models():
+    models_dir = 'structured_output_4o/so_models'
+    models = []
+    for f in os.listdir(models_dir):
+        if f.endswith('.py'):
+            model_name = f.split('.')[0]
+            models.append(model_name)
+    return jsonify(models)
+
+### 2
+
+@app.route('/structured-output-4o-with-examples')
+def structured_output_4o_with_examples():
+    return render_template('structured-output-4o-with-examples.html')
+
+@app.route('/structured-output-4o-with-examples/generate', methods=['POST'])
+def generate_model_with_examples():
+    query = request.json['query']
+    num_examples = request.json.get('num_examples', 0)
+    generated_model = structured_output_4o_with_examples_main(query, num_examples)
+    response = jsonify({
+        'model_code': generated_model.model_code,
+        'model_name': generated_model.model_name,
+        'model_description': generated_model.model_description,
+        'examples': generated_model.examples
+    })
+    return response
+
+@app.route('/structured-output-4o-with-examples/saved_models')
+def get_saved_models_with_examples():
+    models_dir = '_2_structured_output_4o_with_examples/so_models'
+    models = []
+    for f in os.listdir(models_dir):
+        if f.endswith('.py'):
+            model_name = f.split('.')[0]
+            models.append(model_name)
+    return jsonify(models)
+
+# ~~~ TERMINAL BROWSER ~~~
 
 # Maintain terminal history using a deque (limited to last 1000 entries)
 terminal_history = deque(maxlen=1000)
@@ -40,59 +127,6 @@ class StreamCapture:
         self.queue.put({"type": "input_update", "text": text})
 
 stream_capture = StreamCapture(output_queue)
-
-# ~~~ ROUTES ~~~
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/history')
-def get_history():
-    return json.dumps([entry for entry in terminal_history])
-
-@app.route('/stream')
-def stream():
-    def generate():
-        while True:
-            try:
-                output = output_queue.get(timeout=1)
-                yield f"data: {json.dumps(output)}\n\n"
-            except queue.Empty:
-                yield f"data: \n\n"
-            except Exception as e:
-                print(f"Stream error: {str(e)}")
-                break
-    
-    return Response(generate(), mimetype='text/event-stream')
-
-@app.route('/structured-output-4o')
-def structured_output_4o():
-    return render_template('structured-output-4o.html')
-
-@app.route('/structured-output-4o/generate', methods=['POST'])
-def generate_model():
-    query = request.json['query']
-    generated_model = structured_output_4o_main(query)
-    response = jsonify({
-        'model_code': generated_model.model_code,
-        'model_name': generated_model.model_name,
-        'model_description': generated_model.model_description
-    })
-    return response
-
-@app.route('/structured-output-4o/saved_models')
-def get_saved_models():
-    models_dir = 'structured_output_4o/so_models'
-    models = []
-    for f in os.listdir(models_dir):
-        if f.endswith('.py'):
-            model_name = f.split('.')[0]
-            models.append(model_name)
-    return jsonify(models)
-
-
-def run_flask():
-    app.run(debug=False, threaded=True, port=5000)
 
 def custom_input(prompt=""):
     if prompt:
