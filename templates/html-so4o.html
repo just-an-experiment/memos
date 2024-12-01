@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Generator with GPT-4o</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .input-section, .output-section {
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .output-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .preview {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 4px;
+            background: white;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+            margin: 0;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .tab-container {
+            margin-bottom: 10px;
+        }
+        .tab {
+            padding: 8px 16px;
+            border: none;
+            background: #eee;
+            cursor: pointer;
+        }
+        .tab.active {
+            background: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML Generator with GPT-4o</h1>
+        
+        <div class="input-section">
+            <h2>Enter Your Request</h2>
+            <textarea id="query" placeholder="Describe the HTML you want to generate (e.g., 'Create a contact form with name, email, and message fields')"></textarea>
+            <button onclick="generateHTML()">Generate HTML</button>
+        </div>
+
+        <div id="loading" class="loading">
+            Generating HTML...
+        </div>
+
+        <div class="output-section">
+            <h2>Generated Output</h2>
+            <div class="tab-container">
+                <button class="tab active" onclick="showTab('preview')">Preview</button>
+                <button class="tab" onclick="showTab('code')">Code</button>
+            </div>
+            
+            <div id="preview-tab" class="output-container">
+                <div class="preview" id="preview"></div>
+            </div>
+            
+            <div id="code-tab" class="output-container" style="display: none;">
+                <div>
+                    <h3>HTML</h3>
+                    <pre id="htmlCode"></pre>
+                </div>
+                <div>
+                    <h3>CSS</h3>
+                    <pre id="cssCode"></pre>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Description</h3>
+                <pre id="description"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateHTML() {
+            const query = document.getElementById('query').value;
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+            
+            // Clear previous output
+            document.getElementById('preview').innerHTML = '';
+            document.getElementById('htmlCode').textContent = '';
+            document.getElementById('cssCode').textContent = '';
+            document.getElementById('description').textContent = '';
+            
+            fetch('/html-so4o/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: query }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Update code displays
+                document.getElementById('htmlCode').textContent = data.html;
+                document.getElementById('cssCode').textContent = data.css;
+                document.getElementById('description').textContent = data.description;
+                
+                // Update preview
+                const preview = document.getElementById('preview');
+                preview.innerHTML = data.html;
+                
+                // Add generated CSS
+                const styleEl = document.createElement('style');
+                styleEl.textContent = data.css;
+                preview.appendChild(styleEl);
+                
+                loading.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                alert('Error generating HTML: ' + error.message);
+                
+                // Show error in description
+                document.getElementById('description').textContent = 'Error: ' + error.message;
+            });
+        }
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('preview-tab').style.display = tabName === 'preview' ? 'block' : 'none';
+            document.getElementById('code-tab').style.display = tabName === 'code' ? 'grid' : 'none';
+        }
+    </script>
+</body>
+</html>

@@ -17,6 +17,7 @@ from memos._3_pure_function_so4o.pure_function_so4o import (
 from memos._4_pure_function_with_tests_so4o.pure_function_with_tests_so4o import (
     main as pure_function_with_tests_so4o_main
 )
+from memos._5_html_so4o.html_so4o import main as html_so4o_main, GenerationProgress
 
 app = Flask(__name__)
 
@@ -197,8 +198,46 @@ def generate_pure_function_with_tests():
             "error": str(e)
         }), 500
 
+### 5
 
+@app.route('/html-so4o')
+def html_so4o():
+    return render_template('html-so4o.html')
 
+@app.route('/html-so4o/generate', methods=['POST'])
+def generate_html_so4o():
+    try:
+        data = request.json
+        if not data or 'query' not in data:
+            return jsonify({
+                "error": "Invalid request format. Query is required."
+            }), 400
+            
+        query = data['query']
+        max_retries = data.get('max_retries', 3)  # Default to 3 retries
+        
+        if not query:
+            return jsonify({
+                "error": "Query cannot be empty."
+            }), 400
+
+        if not isinstance(max_retries, int) or max_retries < 1:
+            return jsonify({
+                "error": "max_retries must be a positive integer"
+            }), 400
+
+        generated_html = html_so4o_main(query, max_retries)
+        
+        return jsonify({
+            "html": generated_html.html,
+            "css": generated_html.css,
+            "description": generated_html.description,
+            "error": None
+        })
+    except Exception as e:
+        return jsonify({
+            "error": str(e)
+        }), 500
 
 
 
