@@ -19,7 +19,7 @@ Access web interface via `structured_output_4o_with_examples.html`:
 
 ## Example
 ```python
-from structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
+from memos/_2_structured_output_4o_with_examples.structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
 
 # Generate and save a model from query
 model = structured_output_4o_with_examples_main("your query here", num_examples=5)

@@ -195,10 +195,10 @@ class {model_name}Examples(BaseModel):
 def save_model(generated_model: GeneratedModel) -> None:
     
     try:
-        if not os.path.exists(f'{current_folder}/so_models'):
-            os.makedirs(f'{current_folder}/so_models', exist_ok=True)
+        if not os.path.exists(f'{current_folder}/memos/_2_structured_output_4o_with_examples/so_models'):
+            os.makedirs(f'{current_folder}/memos/_2_structured_output_4o_with_examples/so_models', exist_ok=True)
         
-        filename = f"{current_folder}/so_models/{generated_model.model_name}.py"
+        filename = f"{current_folder}/memos/_2_structured_output_4o_with_examples/so_models/{generated_model.model_name}.py"
         
         # Check if we can write to the directory
         if os.path.exists(filename):

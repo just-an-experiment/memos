@@ -96,10 +96,10 @@ Rules:
     )
 
 def save_model(generated_model: GeneratedModel) -> None:
-    if not os.path.exists('structured_output_4o/so_models'):
-        os.makedirs('structured_output_4o/so_models')
+    if not os.path.exists('memos/_1_structured_output_4o/so_models'):
+        os.makedirs('memos/_1_structured_output_4o/so_models')
     
-    filename = f"structured_output_4o/so_models/{generated_model.model_name}.py"
+    filename = f"memos/_1_structured_output_4o/so_models/{generated_model.model_name}.py"
     with open(filename, 'w') as f:
         f.write(f"# {generated_model.model_description}\n\n")
         f.write(imports)

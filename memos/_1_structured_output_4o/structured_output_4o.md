@@ -25,7 +25,7 @@ The main module can be imported to:
 
 ## Example
 ```python
-from structured_output_4o import main as structured_output_4o_main
+from memos/_1_structured_output_4o.structured_output_4o import main as structured_output_4o_main
 
 # Generate and save a model from query
 model = structured_output_4o_main("your query here")
