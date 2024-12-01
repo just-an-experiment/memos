@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Function Generator with Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            grid-column: span 3;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+            display: none;
+        }
+        .purity-status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+        #purityStatus {
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pure Function Generator with Tests</h1>
+        
+        <h2>Generate a New Function</h2>
+        <textarea id="queryInput" placeholder="Describe the pure function you want to generate..."></textarea>
+        
+        <div class="controls">
+            <select id="languageSelect">
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+            </select>
+            
+            <input type="number" id="maxAttempts" placeholder="Max attempts" value="3" min="1" max="10">
+            <input type="number" id="numTests" placeholder="Number of tests" value="3" min="1" max="10">
+            
+            <button onclick="generateFunction()">Generate Function</button>
+        </div>
+
+        <div id="loading" class="loading">Generating function and tests...</div>
+        <div id="error" class="error"></div>
+        
+        <h2>Generated Function</h2>
+        <pre><code id="functionOutput"></code></pre>
+        
+        <h2>Generated Tests</h2>
+        <pre><code id="testsOutput"></code></pre>
+        
+        <div class="purity-status">
+            <p id="purityStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        async function generateFunction() {
+            const query = document.getElementById('queryInput').value;
+            const language = document.getElementById('languageSelect').value;
+            const maxAttempts = parseInt(document.getElementById('maxAttempts').value);
+            const numTests = parseInt(document.getElementById('numTests').value);
+            
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            
+            try {
+                const response = await fetch('/pure-function-with-tests-so4o/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        data: [query, language, maxAttempts, numTests]
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    error.textContent = result.error;
+                    error.style.display = 'block';
+                    document.getElementById('functionOutput').textContent = '';
+                    document.getElementById('testsOutput').textContent = '';
+                    document.getElementById('purityStatus').textContent = '';
+                } else {
+                    const [code, tests, isPure] = result.data;
+                    document.getElementById('functionOutput').textContent = code;
+                    document.getElementById('testsOutput').textContent = tests;
+                    document.getElementById('purityStatus').textContent = 
+                        isPure ? '✅ Function is pure' : '❌ Function is not pure';
+                }
+            } catch (err) {
+                error.textContent = 'An error occurred while generating the function';
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -13,7 +13,6 @@ import os
 
 current_folder = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
 
-
 class GeneratedModel(BaseModel):
   model_query: str = Field(..., description="User's original query to generate the Pydantic model")
   model_code: str = Field(..., description="Python code for the generated Pydantic model")

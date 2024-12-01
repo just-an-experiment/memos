@@ -7,13 +7,22 @@ import time
 from collections import deque
 import contextlib
 import os
-from _1_structured_output_4o.structured_output_4o import main as structured_output_4o_main
-from _2_structured_output_4o_with_examples.structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
+from memos._1_structured_output_4o.structured_output_4o import main as structured_output_4o_main
+from memos._2_structured_output_4o_with_examples.structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
+from memos._3_pure_function_so4o.pure_function_so4o import (
+    main as pure_function_so4o_main,
+    ProgrammingLanguage,
+    Pure
+)
+from memos._4_pure_function_with_tests_so4o.pure_function_with_tests_so4o import (
+    main as pure_function_with_tests_so4o_main
+)
 
 app = Flask(__name__)
 
 def run_flask():
     app.run(debug=False, threaded=True, port=5000)
+
 
 # ~~~ ROUTES ~~~
 @app.route('/')
@@ -21,6 +30,7 @@ def index():
     return render_template('index.html')
 
 ### 0
+
 @app.route('/history')
 def get_history():
     return json.dumps([entry for entry in terminal_history])
@@ -95,6 +105,102 @@ def get_saved_models_with_examples():
             model_name = f.split('.')[0]
             models.append(model_name)
     return jsonify(models)
+
+### 3
+
+@app.route('/pure-function-so4o')
+def pure_function_so4o():
+    return render_template('pure-function-so4o.html')
+
+@app.route('/pure-function-so4o/generate', methods=['POST'])
+def generate_pure_function():
+    try:
+        data = request.json
+        if not data or 'data' not in data or not isinstance(data['data'], list) or len(data['data']) < 2:
+            return jsonify({
+                "data": None,
+                "error": "Invalid request format. Expected data array with query and language."
+            }), 400
+            
+        query = data['data'][0]
+        language = data['data'][1]
+        
+        if not query or not language:
+            return jsonify({
+                "data": None,
+                "error": "Query and language are required."
+            }), 400
+
+        generated_function = pure_function_so4o_main(
+            query=query, 
+            language=ProgrammingLanguage(language)
+        )
+        
+        # Format the response in markdown
+        markdown_response = generated_function.code
+        
+        return jsonify({
+            "data": [markdown_response],
+            "error": None
+        })
+    except Exception as e:
+        return jsonify({
+            "data": None,
+            "error": str(e)
+        }), 500
+
+### 4
+
+@app.route('/pure-function-with-tests-so4o')
+def pure_function_with_tests_so4o():
+    return render_template('pure-function-with-tests-so4o.html')
+
+@app.route('/pure-function-with-tests-so4o/generate', methods=['POST'])
+def generate_pure_function_with_tests():
+    try:
+        data = request.json
+        if not data or 'data' not in data or not isinstance(data['data'], list) or len(data['data']) < 2:
+            return jsonify({
+                "data": None,
+                "error": "Invalid request format. Expected data array with query and language."
+            }), 400
+            
+        query = data['data'][0]
+        language = data['data'][1]
+        max_attempts = data['data'][2] if len(data['data']) > 2 else 3
+        num_tests = data['data'][3] if len(data['data']) > 3 else 3
+        
+        if not query or not language:
+            return jsonify({
+                "data": None,
+                "error": "Query and language are required."
+            }), 400
+
+        generated_function, generated_tests = pure_function_with_tests_so4o_main(
+            query=query, 
+            language=ProgrammingLanguage(language),
+            max_attempts=max_attempts,
+            num_tests=num_tests
+        )
+        
+        return jsonify({
+            "data": [
+                generated_function.code,           # The generated function code
+                generated_tests.test_code,         # The generated tests
+                generated_function.is_pure == Pure.YES  # Boolean indicating if function is pure
+            ],
+            "error": None
+        })
+    except Exception as e:
+        return jsonify({
+            "data": None,
+            "error": str(e)
+        }), 500
+
+
+
+
+
 
 # ~~~ TERMINAL BROWSER ~~~
 
@@ -184,3 +290,5 @@ if __name__ == '__main__':
                 break
 
     print("\nShutting down...")
+    
+    

@@ -17,7 +17,7 @@ Access web interface via `structured_output_4o_with_examples.html`:
 - Generate model
 - View saved models
 
-## API
+## Example
 ```python
 from structured_output_4o_with_examples import main as structured_output_4o_with_examples_main
 

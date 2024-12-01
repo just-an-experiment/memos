@@ -23,8 +23,7 @@ The main module can be imported to:
 2. Store them in `so_models/` directory
 3. (Optional) Generate and store examples
 
-## API
-
+## Example
 ```python
 from structured_output_4o import main as structured_output_4o_main
 

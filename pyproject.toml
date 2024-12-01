@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Your memory operating system"
 authors = ["Belinda Mo"]
 readme = "README.md"
+packages = [
+    { include = "memos" },
+]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
