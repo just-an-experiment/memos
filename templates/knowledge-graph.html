@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .graph-section {
+            margin-top: 20px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        #savedGraphs {
+            list-style-type: none;
+            padding: 0;
+        }
+        #savedGraphs li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f8f8;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #savedGraphs li:hover {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Knowledge Graph Generator</h1>
+        
+        <div class="input-section">
+            <h2>Input Text</h2>
+            <textarea id="inputText" placeholder="Enter text to generate a knowledge graph..."></textarea>
+            <button onclick="generateGraph()">Generate Graph</button>
+        </div>
+
+        <div id="loading" class="loading">
+            <p>Generating knowledge graph...</p>
+        </div>
+
+        <div class="graph-section">
+            <h2>Generated Graph</h2>
+            <div id="graphSummary">
+                <h3>Nodes:</h3>
+                <pre id="nodes"></pre>
+                <h3>Edges:</h3>
+                <pre id="edges"></pre>
+            </div>
+        </div>
+
+        <div class="saved-section">
+            <h2>Saved Graphs</h2>
+            <ul id="savedGraphs"></ul>
+        </div>
+    </div>
+
+    <script>
+        function generateGraph() {
+            const text = document.getElementById('inputText').value;
+            const loading = document.getElementById('loading');
+            
+            if (!text.trim()) {
+                alert('Please enter some text');
+                return;
+            }
+            
+            loading.style.display = 'block';
+            
+            fetch('/knowledge-graph/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: text }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                    return;
+                }
+                
+                // Display nodes
+                const nodesEl = document.getElementById('nodes');
+                nodesEl.textContent = data.nodes.map(node => 
+                    `${node.label} (${node.type})`
+                ).join('\n');
+                
+                // Display edges
+                const edgesEl = document.getElementById('edges');
+                edgesEl.textContent = data.edges.map(edge =>
+                    `${edge.source} --[${edge.relation}]--> ${edge.target}`
+                ).join('\n');
+                
+                loadSavedGraphs();
+            })
+            .catch(error => {
+                alert('Error: ' + error);
+            })
+            .finally(() => {
+                loading.style.display = 'none';
+            });
+        }
+
+        function loadSavedGraphs() {
+            fetch('/knowledge-graph/saved')
+            .then(response => response.json())
+            .then(graphs => {
+                const ul = document.getElementById('savedGraphs');
+                ul.innerHTML = '';
+                graphs.forEach(graph => {
+                    const li = document.createElement('li');
+                    li.textContent = graph;
+                    li.onclick = () => loadGraph(graph);
+                    ul.appendChild(li);
+                });
+            });
+        }
+
+        function loadGraph(filename) {
+            fetch(`/knowledge-graph/load/${filename}`)
+            .then(response => response.json())
+            .then(data => {
+                const nodesEl = document.getElementById('nodes');
+                nodesEl.textContent = data.nodes.map(node => 
+                    `${node.label} (${node.type})`
+                ).join('\n');
+                
+                const edgesEl = document.getElementById('edges');
+                edgesEl.textContent = data.edges.map(edge =>
+                    `${edge.source} --[${edge.relation}]--> ${edge.target}`
+                ).join('\n');
+            });
+        }
+
+        // Load saved graphs on page load
+        loadSavedGraphs();
+    </script>
+</body>
+</html>

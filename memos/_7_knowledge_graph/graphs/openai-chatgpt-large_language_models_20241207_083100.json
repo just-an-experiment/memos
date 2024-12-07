@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": "OpenAI",
+      "label": "OpenAI",
+      "type": "organization",
+      "cluster": "cluster_organization_0"
+    },
+    {
+      "id": "Sam Altman",
+      "label": "Sam Altman",
+      "type": "person",
+      "cluster": "cluster_person_3"
+    },
+    {
+      "id": "San Francisco",
+      "label": "San Francisco",
+      "type": "location",
+      "cluster": "cluster_location_4"
+    },
+    {
+      "id": "ChatGPT",
+      "label": "ChatGPT",
+      "type": "concept",
+      "cluster": "cluster_concept_5"
+    },
+    {
+      "id": "large language models",
+      "label": "large language models",
+      "type": "concept",
+      "cluster": "cluster_concept_5"
+    },
+    {
+      "id": "natural language processing",
+      "label": "natural language processing",
+      "type": "concept",
+      "cluster": "cluster_concept_5"
+    },
+    {
+      "id": "Microsoft",
+      "label": "Microsoft",
+      "type": "organization",
+      "cluster": "cluster_organization_0"
+    },
+    {
+      "id": "Bing",
+      "label": "Bing",
+      "type": "organization",
+      "cluster": "cluster_organization_0"
+    }
+  ],
+  "edges": [
+    {
+      "source": "OpenAI",
+      "target": "Sam Altman",
+      "relation": "founded by"
+    },
+    {
+      "source": "OpenAI",
+      "target": "San Francisco",
+      "relation": "located in"
+    },
+    {
+      "source": "OpenAI",
+      "target": "ChatGPT",
+      "relation": "developed"
+    },
+    {
+      "source": "ChatGPT",
+      "target": "large language models",
+      "relation": "uses"
+    },
+    {
+      "source": "large language models",
+      "target": "natural language processing",
+      "relation": "for"
+    },
+    {
+      "source": "Microsoft",
+      "target": "OpenAI",
+      "relation": "invested in"
+    },
+    {
+      "source": "Microsoft",
+      "target": "ChatGPT",
+      "relation": "integrated"
+    },
+    {
+      "source": "ChatGPT",
+      "target": "Bing",
+      "relation": "into"
+    }
+  ]
+}

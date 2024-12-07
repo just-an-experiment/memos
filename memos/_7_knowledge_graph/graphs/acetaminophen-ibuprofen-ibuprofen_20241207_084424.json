@@ -1,0 +1,652 @@
+{
+  "nodes": [
+    {
+      "id": "Tylenol",
+      "label": "Tylenol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "acetaminophen",
+      "label": "acetaminophen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "pain relief",
+      "label": "pain relief",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "fever reduction",
+      "label": "fever reduction",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "headaches",
+      "label": "headaches",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "muscle aches",
+      "label": "muscle aches",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "arthritis",
+      "label": "arthritis",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "toothaches",
+      "label": "toothaches",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "backaches",
+      "label": "backaches",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "menstrual cramps",
+      "label": "menstrual cramps",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "fever",
+      "label": "fever",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "infections",
+      "label": "infections",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "flu",
+      "label": "flu",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "common cold",
+      "label": "common cold",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "label": "nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ibuprofen",
+      "label": "ibuprofen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "aspirin",
+      "label": "aspirin",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "naproxen",
+      "label": "naproxen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "codeine",
+      "label": "codeine",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "caffeine",
+      "label": "caffeine",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "para-aminophenol derivative",
+      "label": "para-aminophenol derivative",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "C8H9NO2",
+      "label": "C8H9NO2",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "cyclooxygenase (COX) enzymes",
+      "label": "cyclooxygenase (COX) enzymes",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "prostaglandins",
+      "label": "prostaglandins",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "phenacetin",
+      "label": "phenacetin",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "liver toxicity",
+      "label": "liver toxicity",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "nausea",
+      "label": "nausea",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "rash",
+      "label": "rash",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "allergic reactions",
+      "label": "allergic reactions",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "liver damage",
+      "label": "liver damage",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "warfarin",
+      "label": "warfarin",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "gastrointestinal bleeding",
+      "label": "gastrointestinal bleeding",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "kidney issues",
+      "label": "kidney issues",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "paracetamol",
+      "label": "paracetamol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Panadol",
+      "label": "Panadol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "APAP",
+      "label": "APAP",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Advil",
+      "label": "Advil",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ibuprofen",
+      "label": "ibuprofen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "rheumatoid arthritis",
+      "label": "rheumatoid arthritis",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "osteoarthritis",
+      "label": "osteoarthritis",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "propionic acid derivative",
+      "label": "propionic acid derivative",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "C13H18O2",
+      "label": "C13H18O2",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "diclofenac",
+      "label": "diclofenac",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ketoprofen",
+      "label": "ketoprofen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "stomach upset",
+      "label": "stomach upset",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "heartburn",
+      "label": "heartburn",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "gastrointestinal bleeding",
+      "label": "gastrointestinal bleeding",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ulcers",
+      "label": "ulcers",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "kidney damage",
+      "label": "kidney damage",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "cardiovascular events",
+      "label": "cardiovascular events",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "heart attack",
+      "label": "heart attack",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "stroke",
+      "label": "stroke",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "diuretics",
+      "label": "diuretics",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ACE inhibitors",
+      "label": "ACE inhibitors",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Motrin",
+      "label": "Motrin",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Brufen",
+      "label": "Brufen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Tylenol",
+      "target": "acetaminophen",
+      "relation": "is"
+    },
+    {
+      "source": "Tylenol",
+      "target": "pain relief",
+      "relation": "used for"
+    },
+    {
+      "source": "Tylenol",
+      "target": "fever reduction",
+      "relation": "used for"
+    },
+    {
+      "source": "Tylenol",
+      "target": "headaches",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "muscle aches",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "arthritis",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "toothaches",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "backaches",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "menstrual cramps",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "fever",
+      "relation": "reduces"
+    },
+    {
+      "source": "Tylenol",
+      "target": "flu",
+      "relation": "treats"
+    },
+    {
+      "source": "Tylenol",
+      "target": "common cold",
+      "relation": "treats"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "NSAIDs",
+      "relation": "is not"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "codeine",
+      "relation": "combined with"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "caffeine",
+      "relation": "combined with"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "para-aminophenol derivative",
+      "relation": "is"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "C8H9NO2",
+      "relation": "formula"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "cyclooxygenase (COX) enzymes",
+      "relation": "inhibits"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "prostaglandins",
+      "relation": "reduces"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "phenacetin",
+      "relation": "similar to"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "liver toxicity",
+      "relation": "risk of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "nausea",
+      "relation": "causes"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "rash",
+      "relation": "causes"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "allergic reactions",
+      "relation": "risk of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "liver damage",
+      "relation": "risk of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "warfarin",
+      "relation": "interacts with"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "gastrointestinal bleeding",
+      "relation": "risk of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "kidney issues",
+      "relation": "risk of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "paracetamol",
+      "relation": "is"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "Panadol",
+      "relation": "is"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "APAP",
+      "relation": "is"
+    },
+    {
+      "source": "Advil",
+      "target": "ibuprofen",
+      "relation": "is"
+    },
+    {
+      "source": "Advil",
+      "target": "pain relief",
+      "relation": "used for"
+    },
+    {
+      "source": "Advil",
+      "target": "inflammation",
+      "relation": "used for"
+    },
+    {
+      "source": "Advil",
+      "target": "fever reduction",
+      "relation": "used for"
+    },
+    {
+      "source": "Advil",
+      "target": "headaches",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "menstrual cramps",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "muscle aches",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "arthritis",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "rheumatoid arthritis",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "osteoarthritis",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "flu",
+      "relation": "treats"
+    },
+    {
+      "source": "Advil",
+      "target": "common cold",
+      "relation": "treats"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "propionic acid derivative",
+      "relation": "is"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "C13H18O2",
+      "relation": "formula"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "cyclooxygenase (COX) enzymes",
+      "relation": "inhibits"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "naproxen",
+      "relation": "similar to"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "diclofenac",
+      "relation": "similar to"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "ketoprofen",
+      "relation": "similar to"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "stomach upset",
+      "relation": "causes"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "heartburn",
+      "relation": "causes"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "gastrointestinal bleeding",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "ulcers",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "kidney damage",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "cardiovascular events",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "heart attack",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "stroke",
+      "relation": "risk of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "warfarin",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "diuretics",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "ACE inhibitors",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "Motrin",
+      "relation": "is"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "Brufen",
+      "relation": "is"
+    }
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "nodes": [
+    {
+      "id": "processor",
+      "label": "processor",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "scalar instruction",
+      "label": "scalar instruction",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "GPU",
+      "label": "GPU",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "throughput",
+      "label": "throughput",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "latency",
+      "label": "latency",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "SF",
+      "label": "SF",
+      "type": "location",
+      "cluster": "cluster_location_51"
+    },
+    {
+      "id": "Stanford",
+      "label": "Stanford",
+      "type": "location",
+      "cluster": "cluster_location_51"
+    },
+    {
+      "id": "ALU",
+      "label": "ALU",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Execution context",
+      "label": "Execution context",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "register",
+      "label": "register",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "instruction",
+      "label": "instruction",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "computer's state",
+      "label": "computer's state",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "superscalar execution",
+      "label": "superscalar execution",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "clock frequency",
+      "label": "clock frequency",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "cycle",
+      "label": "cycle",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "computer memory",
+      "label": "computer memory",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "cache",
+      "label": "cache",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "thread of control",
+      "label": "thread of control",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "core",
+      "label": "core",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "SIMD",
+      "label": "SIMD",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "hardware multi-threading",
+      "label": "hardware multi-threading",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "utilization",
+      "label": "utilization",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "memory bandwidth",
+      "label": "memory bandwidth",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ispc",
+      "label": "ispc",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "LRU",
+      "label": "LRU",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Transactional Memory",
+      "label": "Transactional Memory",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "atomicity",
+      "label": "atomicity",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "versioning",
+      "label": "versioning",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Power",
+      "label": "Power",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "energy efficiency",
+      "label": "energy efficiency",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "ASIC",
+      "label": "ASIC",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "FPGA",
+      "label": "FPGA",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "DNNs",
+      "label": "DNNs",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "matrix multiplication",
+      "label": "matrix multiplication",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "loop fusion",
+      "label": "loop fusion",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "arithmetic intensity",
+      "label": "arithmetic intensity",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "implicit gemm",
+      "label": "implicit gemm",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Parallel Primitives",
+      "label": "Parallel Primitives",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "map",
+      "label": "map",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "reduce",
+      "label": "reduce",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Spark",
+      "label": "Spark",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Message passing model",
+      "label": "Message passing model",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Resilient Distributed Datasets (RDDs)",
+      "label": "Resilient Distributed Datasets (RDDs)",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Apache Spark",
+      "label": "Apache Spark",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "data parallel operations",
+      "label": "data parallel operations",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "CUDA",
+      "label": "CUDA",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Nvidia warp",
+      "label": "Nvidia warp",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "SIMT",
+      "label": "SIMT",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Nvidia v100",
+      "label": "Nvidia v100",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "convolution",
+      "label": "convolution",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "arithmetic intensity",
+      "label": "arithmetic intensity",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "parallel computer",
+      "label": "parallel computer",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "program",
+      "label": "program",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "atomicity",
+      "label": "atomicity",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "mutex",
+      "label": "mutex",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    }
+  ],
+  "edges": [
+    {
+      "source": "processor",
+      "target": "simple processor",
+      "relation": "visualize"
+    },
+    {
+      "source": "core",
+      "target": "scalar instruction",
+      "relation": "runs"
+    },
+    {
+      "source": "core",
+      "target": "2 cores",
+      "relation": "visualize"
+    },
+    {
+      "source": "GPU",
+      "target": "GPU",
+      "relation": "visualize"
+    },
+    {
+      "source": "throughput",
+      "target": "SF",
+      "relation": "visualize"
+    },
+    {
+      "source": "latency",
+      "target": "laundry pipeline",
+      "relation": "visualize"
+    },
+    {
+      "source": "ALU",
+      "target": "instruction",
+      "relation": "perform"
+    },
+    {
+      "source": "ALU",
+      "target": "registers",
+      "relation": "modify"
+    },
+    {
+      "source": "ALU",
+      "target": "computer memory",
+      "relation": "modify"
+    },
+    {
+      "source": "Execution context",
+      "target": "computer's state",
+      "relation": "stores"
+    },
+    {
+      "source": "instruction",
+      "target": "computer's state",
+      "relation": "modify"
+    },
+    {
+      "source": "superscalar execution",
+      "target": "independent instructions",
+      "relation": "execute"
+    },
+    {
+      "source": "clock frequency",
+      "target": "Power",
+      "relation": "function of"
+    },
+    {
+      "source": "computer memory",
+      "target": "array of bytes",
+      "relation": "is"
+    },
+    {
+      "source": "cache",
+      "target": "memory values",
+      "relation": "maintains"
+    },
+    {
+      "source": "cache",
+      "target": "program performance",
+      "relation": "impact"
+    },
+    {
+      "source": "cache",
+      "target": "line",
+      "relation": "load"
+    },
+    {
+      "source": "cache",
+      "target": "address",
+      "relation": "access"
+    },
+    {
+      "source": "thread of control",
+      "target": "sequence of instructions",
+      "relation": "is"
+    },
+    {
+      "source": "core",
+      "target": "processing unit",
+      "relation": "is"
+    },
+    {
+      "source": "SIMD",
+      "target": "multiple data",
+      "relation": "process"
+    },
+    {
+      "source": "hardware multi-threading",
+      "target": "execution contexts",
+      "relation": "manage"
+    },
+    {
+      "source": "utilization",
+      "target": "more threads",
+      "relation": "increase"
+    },
+    {
+      "source": "throughput",
+      "target": "without affecting latency",
+      "relation": "increase"
+    },
+    {
+      "source": "memory bandwidth",
+      "target": "data to processor",
+      "relation": "provide"
+    },
+    {
+      "source": "ispc",
+      "target": "SIMD units",
+      "relation": "runs on"
+    },
+    {
+      "source": "LRU",
+      "target": "last accessed line",
+      "relation": "evict"
+    },
+    {
+      "source": "Transactional Memory",
+      "target": "atomicity",
+      "relation": "is"
+    },
+    {
+      "source": "Transactional Memory",
+      "target": "non conflicting writes",
+      "relation": "execute"
+    },
+    {
+      "source": "versioning",
+      "target": "cool",
+      "relation": "is"
+    },
+    {
+      "source": "Power",
+      "target": "energy efficiency",
+      "relation": "equation for"
+    },
+    {
+      "source": "ASIC",
+      "target": "application specific integrated circuit",
+      "relation": "is"
+    },
+    {
+      "source": "FPGA",
+      "target": "field programmable gate array",
+      "relation": "is"
+    },
+    {
+      "source": "FPGA",
+      "target": "ASIC",
+      "relation": "compare"
+    },
+    {
+      "source": "DNNs",
+      "target": "matrix multiplication",
+      "relation": "evaluate"
+    },
+    {
+      "source": "loop fusion",
+      "target": "arithmetic intensity",
+      "relation": "increase"
+    },
+    {
+      "source": "implicit gemm",
+      "target": "convolution",
+      "relation": "implement"
+    },
+    {
+      "source": "Parallel Primitives",
+      "target": "memory bandwidth",
+      "relation": "reduce"
+    },
+    {
+      "source": "map",
+      "target": "data parallel operations",
+      "relation": "is"
+    },
+    {
+      "source": "reduce",
+      "target": "data parallel operations",
+      "relation": "is"
+    },
+    {
+      "source": "Spark",
+      "target": "data parallel operations",
+      "relation": "is"
+    },
+    {
+      "source": "Message passing model",
+      "target": "distributed memory communication",
+      "relation": "is"
+    },
+    {
+      "source": "Resilient Distributed Datasets (RDDs)",
+      "target": "Apache Spark",
+      "relation": "is"
+    },
+    {
+      "source": "Apache Spark",
+      "target": "in-memory computing",
+      "relation": "is"
+    },
+    {
+      "source": "CUDA",
+      "target": "programming language",
+      "relation": "is"
+    },
+    {
+      "source": "Nvidia warp",
+      "target": "execution contexts",
+      "relation": "is"
+    },
+    {
+      "source": "SIMT",
+      "target": "CUDA threads",
+      "relation": "is"
+    },
+    {
+      "source": "Nvidia v100",
+      "target": "core",
+      "relation": "visualize"
+    },
+    {
+      "source": "convolution",
+      "target": "arithmetic intensity",
+      "relation": "is"
+    },
+    {
+      "source": "arithmetic intensity",
+      "target": "parallel processors",
+      "relation": "utilize"
+    },
+    {
+      "source": "atomicity",
+      "target": "mutex",
+      "relation": "is"
+    }
+  ]
+}
