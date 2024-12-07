@@ -18,6 +18,10 @@ from memos._4_pure_function_with_tests_so4o.pure_function_with_tests_so4o import
     main as pure_function_with_tests_so4o_main
 )
 from memos._5_html_so4o.html_so4o import main as html_so4o_main, GenerationProgress
+from memos._6_pure_function_with_tests_and_imports_so4o.pure_function_with_tests_and_imports_so4o import (
+    main as pure_function_with_tests_and_imports_so4o_main,
+    ProgrammingLanguage
+)
 
 app = Flask(__name__)
 
@@ -236,6 +240,71 @@ def generate_html_so4o():
         })
     except Exception as e:
         return jsonify({
+            "error": str(e)
+        }), 500
+
+### 6
+
+@app.route('/pure-function-with-tests-and-imports-so4o')
+def pure_function_with_tests_and_imports_so4o():
+    return render_template('pure-function-with-tests-and-imports-so4o.html')
+
+@app.route('/pure-function-with-tests-and-imports-so4o/generate', methods=['POST'])
+def generate_pure_function_with_tests_and_imports():
+    try:
+        data = request.json
+        if not data:
+            return jsonify({
+                "data": None,
+                "error": "Invalid request format."
+            }), 400
+            
+        query = data.get('query')
+        language = data.get('language')
+        max_attempts = data.get('max_attempts', 3)
+        num_tests = data.get('num_tests', 3)
+        folders = data.get('folders', [])
+        
+        if not query or not language or not folders:
+            return jsonify({
+                "data": None,
+                "error": "Query, language, and folders are required."
+            }), 400
+
+        if not isinstance(folders, list):
+            return jsonify({
+                "data": None,
+                "error": "Folders must be a list."
+            }), 400
+            
+        folders = [os.path.normpath(f) for f in folders]
+        
+        for folder in folders:
+            if '..' in folder or folder.startswith('/'):
+                return jsonify({
+                    "data": None,
+                    "error": "Invalid folder path."
+                }), 400
+
+        generated_function, generated_tests = pure_function_with_tests_and_imports_so4o_main(
+            query=query, 
+            folders=folders,
+            language=ProgrammingLanguage(language),
+            max_attempts=max_attempts,
+            num_tests=num_tests
+        )
+        
+        return jsonify({
+            "data": [
+                generated_function.code,           # The generated function code
+                generated_tests.test_code,         # The generated tests
+                generated_function.is_pure == Pure.YES  # Boolean indicating if function is pure
+            ],
+            "error": None
+        })
+    except Exception as e:
+        return jsonify({
+            "data": None,
             "error": str(e)
         }), 500
 

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure Function Generator with Tests and Imports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .error {
+            color: #ff0000;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            border-radius: 4px;
+            display: none;
+        }
+        .purity-status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+        #purityStatus {
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pure Function Generator with Tests and Imports</h1>
+        
+        <h2>Generate a New Function</h2>
+        <textarea id="queryInput" placeholder="Describe the pure function you want to generate..."></textarea>
+        
+        <div class="controls">
+            <div class="input-group">
+                <label for="languageInput">Language:</label>
+                <input type="text" id="languageInput" value="python" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label for="maxAttempts">Max Attempts:</label>
+                <input type="number" id="maxAttempts" placeholder="Max attempts" value="3" min="1" max="10">
+            </div>
+            
+            <div class="input-group">
+                <label for="numTests">Number of Tests:</label>
+                <input type="number" id="numTests" placeholder="Number of tests" value="3" min="1" max="10">
+            </div>
+            
+            <div class="input-group">
+                <label for="foldersInput">Folders to Search:</label>
+                <input type="text" id="foldersInput" placeholder="Enter folders to search (comma-separated, '.' for functions directory)">
+            </div>
+
+            <button onclick="generateFunction()">Generate Function</button>
+        </div>
+
+        <div id="loading" class="loading">Generating function and tests...</div>
+        <div id="error" class="error"></div>
+        
+        <h2>Generated Function</h2>
+        <pre><code id="functionOutput"></code></pre>
+        
+        <h2>Generated Tests</h2>
+        <pre><code id="testsOutput"></code></pre>
+        
+        <div class="purity-status">
+            <p id="purityStatus"></p>
+        </div>
+    </div>
+
+    <script>
+        async function generateFunction() {
+            const query = document.getElementById('queryInput').value.trim();
+            const language = document.getElementById('languageInput').value;
+            const maxAttempts = parseInt(document.getElementById('maxAttempts').value);
+            const numTests = parseInt(document.getElementById('numTests').value);
+            const folders = document.getElementById('foldersInput').value
+                .split(',')
+                .map(f => f.trim())
+                .filter(f => f);
+            
+            const errorElement = document.getElementById('error');
+            
+            if (!query) {
+                errorElement.textContent = "Query cannot be empty";
+                errorElement.style.display = 'block';
+                return;
+            }
+            
+            if (!folders.length) {
+                errorElement.textContent = "At least one folder must be specified";
+                errorElement.style.display = 'block';
+                return;
+            }
+            
+            if (isNaN(maxAttempts) || maxAttempts < 1 || maxAttempts > 10) {
+                errorElement.textContent = "Max attempts must be between 1 and 10";
+                errorElement.style.display = 'block';
+                return;
+            }
+            
+            if (isNaN(numTests) || numTests < 1 || numTests > 10) {
+                errorElement.textContent = "Number of tests must be between 1 and 10";
+                errorElement.style.display = 'block';
+                return;
+            }
+            
+            const loading = document.getElementById('loading');
+            
+            loading.style.display = 'block';
+            errorElement.style.display = 'none';
+            
+            try {
+                const response = await fetch('/pure-function-with-tests-and-imports-so4o/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query,
+                        language,
+                        max_attempts: maxAttempts,
+                        num_tests: numTests,
+                        folders
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    errorElement.textContent = result.error;
+                    errorElement.style.display = 'block';
+                    document.getElementById('functionOutput').textContent = '';
+                    document.getElementById('testsOutput').textContent = '';
+                    document.getElementById('purityStatus').textContent = '';
+                } else {
+                    const [code, tests, isPure] = result.data;
+                    document.getElementById('functionOutput').textContent = code;
+                    document.getElementById('testsOutput').textContent = tests;
+                    document.getElementById('purityStatus').textContent = 
+                        isPure ? '✅ Function is pure' : '❌ Function is not pure';
+                }
+            } catch (err) {
+                errorElement.textContent = 'An error occurred while generating the function';
+                errorElement.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
