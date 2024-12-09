@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "hello world",
+      "label": "hello world",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    }
+  ],
+  "edges": [
+    {
+      "source": "hello",
+      "target": "world",
+      "relation": "greets"
+    }
+  ]
+}

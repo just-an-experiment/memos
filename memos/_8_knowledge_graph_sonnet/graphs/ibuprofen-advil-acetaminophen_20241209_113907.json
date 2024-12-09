@@ -1,0 +1,534 @@
+{
+  "nodes": [
+    {
+      "id": "Tylenol",
+      "label": "Tylenol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "acetaminophen",
+      "label": "acetaminophen",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "pain relief",
+      "label": "pain relief",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "fever reduction",
+      "label": "fever reduction",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "label": "nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "ibuprofen",
+      "label": "ibuprofen",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "aspirin",
+      "label": "aspirin",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "codeine",
+      "label": "codeine",
+      "type": "concept",
+      "cluster": "cluster_concept_27"
+    },
+    {
+      "id": "caffeine",
+      "label": "caffeine",
+      "type": "concept",
+      "cluster": "cluster_concept_27"
+    },
+    {
+      "id": "C8H9NO2",
+      "label": "C8H9NO2",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "cyclooxygenase (COX)",
+      "label": "cyclooxygenase (COX)",
+      "type": "concept",
+      "cluster": "cluster_concept_30"
+    },
+    {
+      "id": "prostaglandins",
+      "label": "prostaglandins",
+      "type": "concept",
+      "cluster": "cluster_concept_30"
+    },
+    {
+      "id": "phenacetin",
+      "label": "phenacetin",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "analgesic-antipyretic agents",
+      "label": "analgesic-antipyretic agents",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "carboxylic acid group",
+      "label": "carboxylic acid group",
+      "type": "concept",
+      "cluster": "cluster_concept_35"
+    },
+    {
+      "id": "warfarin",
+      "label": "warfarin",
+      "type": "concept",
+      "cluster": "cluster_concept_37"
+    },
+    {
+      "id": "paracetamol",
+      "label": "paracetamol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Panadol",
+      "label": "Panadol",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "APAP",
+      "label": "APAP",
+      "type": "concept",
+      "cluster": "cluster_concept_0"
+    },
+    {
+      "id": "Advil",
+      "label": "Advil",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "nonsteroidal anti-inflammatory drug (NSAID)",
+      "label": "nonsteroidal anti-inflammatory drug (NSAID)",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "inflammation",
+      "label": "inflammation",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "menstrual cramps",
+      "label": "menstrual cramps",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "rheumatoid arthritis",
+      "label": "rheumatoid arthritis",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "osteoarthritis",
+      "label": "osteoarthritis",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "naproxen",
+      "label": "naproxen",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "C13H18O2",
+      "label": "C13H18O2",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "COX-1",
+      "label": "COX-1",
+      "type": "concept",
+      "cluster": "cluster_concept_30"
+    },
+    {
+      "id": "COX-2",
+      "label": "COX-2",
+      "type": "concept",
+      "cluster": "cluster_concept_30"
+    },
+    {
+      "id": "diclofenac",
+      "label": "diclofenac",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "ketoprofen",
+      "label": "ketoprofen",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "S-enantiomer",
+      "label": "S-enantiomer",
+      "type": "concept",
+      "cluster": "cluster_concept_55"
+    },
+    {
+      "id": "stomach upset",
+      "label": "stomach upset",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "nausea",
+      "label": "nausea",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "heartburn",
+      "label": "heartburn",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "gastrointestinal bleeding",
+      "label": "gastrointestinal bleeding",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "ulcers",
+      "label": "ulcers",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "kidney damage",
+      "label": "kidney damage",
+      "type": "concept",
+      "cluster": "cluster_concept_47"
+    },
+    {
+      "id": "heart attack",
+      "label": "heart attack",
+      "type": "event",
+      "cluster": "cluster_event_46"
+    },
+    {
+      "id": "stroke",
+      "label": "stroke",
+      "type": "event",
+      "cluster": "cluster_event_46"
+    },
+    {
+      "id": "anticoagulants",
+      "label": "anticoagulants",
+      "type": "concept",
+      "cluster": "cluster_concept_37"
+    },
+    {
+      "id": "diuretics",
+      "label": "diuretics",
+      "type": "concept",
+      "cluster": "cluster_concept_52"
+    },
+    {
+      "id": "ACE inhibitors",
+      "label": "ACE inhibitors",
+      "type": "concept",
+      "cluster": "cluster_concept_52"
+    },
+    {
+      "id": "peptic ulcers",
+      "label": "peptic ulcers",
+      "type": "concept",
+      "cluster": "cluster_concept_40"
+    },
+    {
+      "id": "kidney disease",
+      "label": "kidney disease",
+      "type": "concept",
+      "cluster": "cluster_concept_47"
+    },
+    {
+      "id": "hypersensitivity",
+      "label": "hypersensitivity",
+      "type": "concept",
+      "cluster": "cluster_concept_50"
+    },
+    {
+      "id": "Motrin",
+      "label": "Motrin",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    },
+    {
+      "id": "Brufen",
+      "label": "Brufen",
+      "type": "concept",
+      "cluster": "cluster_concept_11"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Tylenol",
+      "target": "acetaminophen",
+      "relation": "is known as"
+    },
+    {
+      "source": "Tylenol",
+      "target": "pain relief",
+      "relation": "is indicated for"
+    },
+    {
+      "source": "Tylenol",
+      "target": "fever reduction",
+      "relation": "is indicated for"
+    },
+    {
+      "source": "Tylenol",
+      "target": "nonsteroidal anti-inflammatory drugs (NSAIDs)",
+      "relation": "lacks"
+    },
+    {
+      "source": "Tylenol",
+      "target": "codeine",
+      "relation": "is combined with"
+    },
+    {
+      "source": "Tylenol",
+      "target": "caffeine",
+      "relation": "is combined with"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "C8H9NO2",
+      "relation": "has chemical formula"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "cyclooxygenase (COX)",
+      "relation": "inhibits"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "prostaglandins",
+      "relation": "reduces production of"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "phenacetin",
+      "relation": "is similar to"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "analgesic-antipyretic agents",
+      "relation": "is similar to"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "carboxylic acid group",
+      "relation": "lacks"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "warfarin",
+      "relation": "interacts with"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "paracetamol",
+      "relation": "is known as"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "Panadol",
+      "relation": "is known as"
+    },
+    {
+      "source": "acetaminophen",
+      "target": "APAP",
+      "relation": "is known as"
+    },
+    {
+      "source": "Advil",
+      "target": "ibuprofen",
+      "relation": "is brand name for"
+    },
+    {
+      "source": "Advil",
+      "target": "nonsteroidal anti-inflammatory drug (NSAID)",
+      "relation": "is"
+    },
+    {
+      "source": "Advil",
+      "target": "pain relief",
+      "relation": "is indicated for"
+    },
+    {
+      "source": "Advil",
+      "target": "inflammation",
+      "relation": "is indicated for"
+    },
+    {
+      "source": "Advil",
+      "target": "fever reduction",
+      "relation": "is indicated for"
+    },
+    {
+      "source": "Advil",
+      "target": "menstrual cramps",
+      "relation": "is used for"
+    },
+    {
+      "source": "Advil",
+      "target": "rheumatoid arthritis",
+      "relation": "is used for"
+    },
+    {
+      "source": "Advil",
+      "target": "osteoarthritis",
+      "relation": "is used for"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "C13H18O2",
+      "relation": "has chemical formula"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "COX-1",
+      "relation": "inhibits"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "COX-2",
+      "relation": "inhibits"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "prostaglandins",
+      "relation": "reduces synthesis of"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "diclofenac",
+      "relation": "is related to"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "ketoprofen",
+      "relation": "is related to"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "S-enantiomer",
+      "relation": "contains"
+    },
+    {
+      "source": "Advil",
+      "target": "stomach upset",
+      "relation": "can cause side effects"
+    },
+    {
+      "source": "Advil",
+      "target": "nausea",
+      "relation": "can cause side effects"
+    },
+    {
+      "source": "Advil",
+      "target": "heartburn",
+      "relation": "can cause side effects"
+    },
+    {
+      "source": "Advil",
+      "target": "gastrointestinal bleeding",
+      "relation": "can cause"
+    },
+    {
+      "source": "Advil",
+      "target": "ulcers",
+      "relation": "can cause"
+    },
+    {
+      "source": "Advil",
+      "target": "kidney damage",
+      "relation": "can cause"
+    },
+    {
+      "source": "Advil",
+      "target": "heart attack",
+      "relation": "can cause"
+    },
+    {
+      "source": "Advil",
+      "target": "stroke",
+      "relation": "can cause"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "anticoagulants",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "diuretics",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "ACE inhibitors",
+      "relation": "interacts with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "acetaminophen",
+      "relation": "is combined with"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "peptic ulcers",
+      "relation": "should be avoided by"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "kidney disease",
+      "relation": "should be avoided by"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "hypersensitivity",
+      "relation": "should be avoided by"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "Motrin",
+      "relation": "is known as"
+    },
+    {
+      "source": "ibuprofen",
+      "target": "Brufen",
+      "relation": "is known as"
+    }
+  ]
+}

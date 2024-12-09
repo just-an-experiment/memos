@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowledge Graph Generator</title>
+    <title>Knowledge Graph Generator (Claude Sonnet)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,9 +30,10 @@
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-family: monospace;
         }
         button {
-            background-color: #4CAF50;
+            background-color: #7c4dff;  /* Different color to distinguish from GPT-4o version */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -40,7 +41,7 @@
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #6200ea;
         }
         pre {
             background-color: #f8f8f8;
@@ -49,6 +50,7 @@
             padding: 10px;
             overflow-x: auto;
             white-space: pre-wrap;
+            font-family: monospace;
         }
         .graph-section {
             margin-top: 20px;
@@ -68,15 +70,24 @@
             background: #f8f8f8;
             border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.2s;
         }
         #savedGraphs li:hover {
             background: #eee;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Knowledge Graph Generator</h1>
+        <h1>Knowledge Graph Generator (Claude Sonnet)</h1>
         
         <div class="input-section">
             <h2>Input Text</h2>
@@ -84,17 +95,19 @@
             <button onclick="generateGraph()">Generate Graph</button>
         </div>
 
+        <div id="error" class="error"></div>
+
         <div id="loading" class="loading">
-            <p>Generating knowledge graph...</p>
+            <p>Generating knowledge graph with Claude Sonnet...</p>
         </div>
 
         <div class="graph-section">
             <h2>Generated Graph</h2>
             <div id="graphSummary">
-                <h3>Nodes:</h3>
-                <pre id="nodes"></pre>
                 <h3>Edges:</h3>
                 <pre id="edges"></pre>
+                <h3>Nodes:</h3>
+                <pre id="nodes"></pre>
             </div>
         </div>
 
@@ -105,18 +118,29 @@
     </div>
 
     <script>
+        function showError(message) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+
         function generateGraph() {
             const text = document.getElementById('inputText').value;
             const loading = document.getElementById('loading');
             
             if (!text.trim()) {
-                alert('Please enter some text');
+                showError('Please enter some text');
                 return;
             }
             
+            hideError();
             loading.style.display = 'block';
             
-            fetch('/knowledge-graph/generate', {
+            fetch('/knowledge-graph-sonnet/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,14 +150,14 @@
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    alert('Error: ' + data.error);
+                    showError('Error: ' + data.error);
                     return;
                 }
                 
                 // Display nodes
                 const nodesEl = document.getElementById('nodes');
                 nodesEl.textContent = data.nodes.map(node => 
-                    `${node.label} (${node.type})`
+                    `${node.label} (${node.type}${node.cluster ? `, cluster: ${node.cluster}` : ''})`
                 ).join('\n');
                 
                 // Display edges
@@ -145,7 +169,7 @@
                 loadSavedGraphs();
             })
             .catch(error => {
-                alert('Error: ' + error);
+                showError('Error: ' + error);
             })
             .finally(() => {
                 loading.style.display = 'none';
@@ -153,7 +177,7 @@
         }
 
         function loadSavedGraphs() {
-            fetch('/knowledge-graph/saved')
+            fetch('/knowledge-graph-sonnet/saved')
             .then(response => response.json())
             .then(graphs => {
                 const ul = document.getElementById('savedGraphs');
@@ -164,22 +188,33 @@
                     li.onclick = () => loadGraph(graph);
                     ul.appendChild(li);
                 });
+            })
+            .catch(error => {
+                showError('Error loading saved graphs: ' + error);
             });
         }
 
         function loadGraph(filename) {
-            fetch(`/knowledge-graph/load/${filename}`)
+            fetch(`/knowledge-graph-sonnet/load/${filename}`)
             .then(response => response.json())
             .then(data => {
+                if (data.error) {
+                    showError('Error: ' + data.error);
+                    return;
+                }
+
                 const nodesEl = document.getElementById('nodes');
                 nodesEl.textContent = data.nodes.map(node => 
-                    `${node.label} (${node.type})`
+                    `${node.label} (${node.type}${node.cluster ? `, cluster: ${node.cluster}` : ''})`
                 ).join('\n');
                 
                 const edgesEl = document.getElementById('edges');
                 edgesEl.textContent = data.edges.map(edge =>
                     `${edge.source} --[${edge.relation}]--> ${edge.target}`
                 ).join('\n');
+            })
+            .catch(error => {
+                showError('Error loading graph: ' + error);
             });
         }
 

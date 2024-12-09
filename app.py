@@ -22,7 +22,8 @@ from memos._6_pure_function_with_tests_and_imports_so4o.pure_function_with_tests
     main as pure_function_with_tests_and_imports_so4o_main,
     ProgrammingLanguage
 )
-from memos._7_knowledge_graph.knowledge_graph import main as knowledge_graph_main
+from memos._7_knowledge_graph_4o.knowledge_graph_4o import main as knowledge_graph_4o_main
+from memos._8_knowledge_graph_sonnet.knowledge_graph_sonnet import main as knowledge_graph_sonnet_main
 
 app = Flask(__name__)
 
@@ -311,18 +312,18 @@ def generate_pure_function_with_tests_and_imports():
 
 ### 7
 
-@app.route('/knowledge-graph')
-def knowledge_graph():
-    return render_template('knowledge-graph.html')
+@app.route('/knowledge-graph-4o')
+def knowledge_graph_4o():
+    return render_template('knowledge-graph-4o.html')
 
-@app.route('/knowledge-graph/generate', methods=['POST'])
+@app.route('/knowledge-graph-4o/generate', methods=['POST'])
 def generate_graph():
     try:
         text = request.json.get('text')
         if not text:
             return jsonify({"error": "No text provided"}), 400
             
-        kg = knowledge_graph_main(text)
+        kg = knowledge_graph_4o_main(text)
         
         return jsonify({
             "nodes": [node.model_dump() for node in kg.nodes],
@@ -331,10 +332,10 @@ def generate_graph():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/knowledge-graph/saved')
+@app.route('/knowledge-graph-4o/saved')
 def get_saved_graphs():
     try:
-        graphs_dir = os.path.join('memos', '_7_knowledge_graph', 'graphs')
+        graphs_dir = os.path.join('memos', '_7_knowledge_graph_4o', 'graphs')
         if not os.path.exists(graphs_dir):
             return jsonify([])
             
@@ -343,10 +344,58 @@ def get_saved_graphs():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route('/knowledge-graph/load/<filename>')
+@app.route('/knowledge-graph-4o/load/<filename>')
 def load_graph(filename):
     try:
-        graph_path = os.path.join('memos', '_7_knowledge_graph', 'graphs', filename)
+        graph_path = os.path.join('memos', '_7_knowledge_graph_4o', 'graphs', filename)
+        if not os.path.exists(graph_path):
+            return jsonify({"error": "Graph not found"}), 404
+            
+        with open(graph_path, 'r') as f:
+            graph_data = json.load(f)
+            
+        return jsonify(graph_data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+### 8
+
+@app.route('/knowledge-graph-sonnet')
+def knowledge_graph_sonnet():
+    return render_template('knowledge-graph-sonnet.html')
+
+@app.route('/knowledge-graph-sonnet/generate', methods=['POST'])
+def generate_graph_sonnet():
+    try:
+        text = request.json.get('text')
+        if not text:
+            return jsonify({"error": "No text provided"}), 400
+            
+        kg = knowledge_graph_sonnet_main(text)
+        
+        return jsonify({
+            "nodes": [node.model_dump() for node in kg.nodes],
+            "edges": [edge.model_dump() for edge in kg.edges]
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/knowledge-graph-sonnet/saved')
+def get_saved_graphs_sonnet():
+    try:
+        graphs_dir = os.path.join('memos', '_8_knowledge_graph_sonnet', 'graphs')
+        if not os.path.exists(graphs_dir):
+            return jsonify([])
+            
+        graphs = [f for f in os.listdir(graphs_dir) if f.endswith('.json')]
+        return jsonify(graphs)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/knowledge-graph-sonnet/load/<filename>')
+def load_graph_sonnet(filename):
+    try:
+        graph_path = os.path.join('memos', '_8_knowledge_graph_sonnet', 'graphs', filename)
         if not os.path.exists(graph_path):
             return jsonify({"error": "Graph not found"}), 404
             

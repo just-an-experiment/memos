@@ -10,31 +10,19 @@
       "id": "Sam Altman",
       "label": "Sam Altman",
       "type": "person",
-      "cluster": "cluster_person_3"
+      "cluster": "cluster_person_2"
     },
     {
       "id": "San Francisco",
       "label": "San Francisco",
       "type": "location",
-      "cluster": "cluster_location_4"
+      "cluster": "cluster_location_3"
     },
     {
       "id": "ChatGPT",
       "label": "ChatGPT",
       "type": "concept",
-      "cluster": "cluster_concept_5"
-    },
-    {
-      "id": "large language models",
-      "label": "large language models",
-      "type": "concept",
-      "cluster": "cluster_concept_5"
-    },
-    {
-      "id": "natural language processing",
-      "label": "natural language processing",
-      "type": "concept",
-      "cluster": "cluster_concept_5"
+      "cluster": "cluster_concept_4"
     },
     {
       "id": "Microsoft",
@@ -45,35 +33,25 @@
     {
       "id": "Bing",
       "label": "Bing",
-      "type": "organization",
-      "cluster": "cluster_organization_0"
+      "type": "concept",
+      "cluster": "cluster_concept_6"
     }
   ],
   "edges": [
     {
       "source": "OpenAI",
       "target": "Sam Altman",
-      "relation": "founded by"
+      "relation": "created by"
     },
     {
       "source": "OpenAI",
       "target": "San Francisco",
-      "relation": "located in"
+      "relation": "created in"
     },
     {
       "source": "OpenAI",
       "target": "ChatGPT",
-      "relation": "developed"
-    },
-    {
-      "source": "ChatGPT",
-      "target": "large language models",
-      "relation": "uses"
-    },
-    {
-      "source": "large language models",
-      "target": "natural language processing",
-      "relation": "for"
+      "relation": "created"
     },
     {
       "source": "Microsoft",
@@ -83,12 +61,12 @@
     {
       "source": "Microsoft",
       "target": "Bing",
-      "relation": "integrated into"
+      "relation": "is part of"
     },
     {
-      "source": "Microsoft",
-      "target": "ChatGPT",
-      "relation": "integrated"
+      "source": "ChatGPT",
+      "target": "Bing",
+      "relation": "is part of"
     }
   ]
 }

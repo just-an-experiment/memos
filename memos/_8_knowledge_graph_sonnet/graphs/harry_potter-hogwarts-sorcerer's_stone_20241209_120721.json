@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "Harry Potter",
+      "label": "Harry Potter",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "Ron Weasley",
+      "label": "Ron Weasley",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "Hermione Granger",
+      "label": "Hermione Granger",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "Albus Dumbledore",
+      "label": "Albus Dumbledore",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Voldemort",
+      "label": "Voldemort",
+      "type": "person",
+      "cluster": "cluster_person_8"
+    },
+    {
+      "id": "Severus Snape",
+      "label": "Severus Snape",
+      "type": "person",
+      "cluster": "cluster_person_8"
+    },
+    {
+      "id": "Quirrell",
+      "label": "Quirrell",
+      "type": "person",
+      "cluster": "cluster_person_8"
+    },
+    {
+      "id": "Rubeus Hagrid",
+      "label": "Rubeus Hagrid",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Draco Malfoy",
+      "label": "Draco Malfoy",
+      "type": "person",
+      "cluster": "cluster_person_8"
+    },
+    {
+      "id": "McGonagall",
+      "label": "McGonagall",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Nicolas Flamel",
+      "label": "Nicolas Flamel",
+      "type": "person",
+      "cluster": "cluster_person_13"
+    },
+    {
+      "id": "Hogwarts",
+      "label": "Hogwarts",
+      "type": "organization",
+      "cluster": "cluster_organization_11"
+    },
+    {
+      "id": "Gryffindor",
+      "label": "Gryffindor",
+      "type": "organization",
+      "cluster": "cluster_organization_11"
+    },
+    {
+      "id": "Slytherin",
+      "label": "Slytherin",
+      "type": "organization",
+      "cluster": "cluster_organization_11"
+    },
+    {
+      "id": "Sorcerer's Stone",
+      "label": "Sorcerer's Stone",
+      "type": "concept",
+      "cluster": "cluster_concept_16"
+    },
+    {
+      "id": "Mirror of Erised",
+      "label": "Mirror of Erised",
+      "type": "concept",
+      "cluster": "cluster_concept_18"
+    },
+    {
+      "id": "Fluffy",
+      "label": "Fluffy",
+      "type": "other",
+      "cluster": "cluster_other_18"
+    },
+    {
+      "id": "Devil's Snare",
+      "label": "Devil's Snare",
+      "type": "other",
+      "cluster": "cluster_other_20"
+    },
+    {
+      "id": "King's Cross Station",
+      "label": "King's Cross Station",
+      "type": "location",
+      "cluster": "cluster_location_20"
+    },
+    {
+      "id": "Diagon Alley",
+      "label": "Diagon Alley",
+      "type": "location",
+      "cluster": "cluster_location_22"
+    },
+    {
+      "id": "Forbidden Forest",
+      "label": "Forbidden Forest",
+      "type": "location",
+      "cluster": "cluster_location_25"
+    },
+    {
+      "id": "Gringotts",
+      "label": "Gringotts",
+      "type": "organization",
+      "cluster": "cluster_organization_15"
+    },
+    {
+      "id": "Ministry of Magic",
+      "label": "Ministry of Magic",
+      "type": "organization",
+      "cluster": "cluster_organization_17"
+    },
+    {
+      "id": "Halloween",
+      "label": "Halloween",
+      "type": "event",
+      "cluster": "cluster_event_25"
+    },
+    {
+      "id": "Christmas",
+      "label": "Christmas",
+      "type": "event",
+      "cluster": "cluster_event_25"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Harry Potter",
+      "target": "Quirrell",
+      "relation": "DEFEATS"
+    },
+    {
+      "source": "Quirrell",
+      "target": "Voldemort",
+      "relation": "SERVES"
+    },
+    {
+      "source": "Severus Snape",
+      "target": "Harry Potter",
+      "relation": "PROTECTS"
+    },
+    {
+      "source": "Albus Dumbledore",
+      "target": "Sorcerer's Stone",
+      "relation": "PROTECTS"
+    },
+    {
+      "source": "Nicolas Flamel",
+      "target": "Sorcerer's Stone",
+      "relation": "CREATES"
+    },
+    {
+      "source": "Fluffy",
+      "target": "Sorcerer's Stone",
+      "relation": "PROTECTS"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "Gryffindor",
+      "relation": "IS_PART_OF"
+    },
+    {
+      "source": "Draco Malfoy",
+      "target": "Slytherin",
+      "relation": "IS_PART_OF"
+    },
+    {
+      "source": "McGonagall",
+      "target": "Hogwarts",
+      "relation": "WORKS_AT"
+    },
+    {
+      "source": "Rubeus Hagrid",
+      "target": "Hogwarts",
+      "relation": "WORKS_AT"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "Mirror of Erised",
+      "relation": "DISCOVERS"
+    },
+    {
+      "source": "Hermione Granger",
+      "target": "Devil's Snare",
+      "relation": "DEFEATS"
+    },
+    {
+      "source": "Gringotts",
+      "target": "Diagon Alley",
+      "relation": "IS_LOCATED_IN"
+    },
+    {
+      "source": "Hogwarts",
+      "target": "Forbidden Forest",
+      "relation": "HAS_PART"
+    },
+    {
+      "source": "Ministry of Magic",
+      "target": "Hogwarts",
+      "relation": "CONTROLS"
+    }
+  ]
+}
