@@ -1,0 +1,311 @@
+{
+  "nodes": [
+    {
+      "id": "Harry Potter",
+      "label": "Harry Potter",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "Mr. Dursley",
+      "label": "Mr. Dursley",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Mrs. Dursley",
+      "label": "Mrs. Dursley",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Petunia Dursley",
+      "label": "Petunia Dursley",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Dudley Dursley",
+      "label": "Dudley Dursley",
+      "type": "person",
+      "cluster": "cluster_person_4"
+    },
+    {
+      "id": "Lily Potter",
+      "label": "Lily Potter",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "James Potter",
+      "label": "James Potter",
+      "type": "person",
+      "cluster": "cluster_person_0"
+    },
+    {
+      "id": "Albus Dumbledore",
+      "label": "Albus Dumbledore",
+      "type": "person",
+      "cluster": "cluster_person_9"
+    },
+    {
+      "id": "Professor McGonagall",
+      "label": "Professor McGonagall",
+      "type": "person",
+      "cluster": "cluster_person_9"
+    },
+    {
+      "id": "Hagrid",
+      "label": "Hagrid",
+      "type": "person",
+      "cluster": "cluster_person_16"
+    },
+    {
+      "id": "Sirius Black",
+      "label": "Sirius Black",
+      "type": "person",
+      "cluster": "cluster_person_16"
+    },
+    {
+      "id": "Madam Pomfrey",
+      "label": "Madam Pomfrey",
+      "type": "person",
+      "cluster": "cluster_person_9"
+    },
+    {
+      "id": "Dedalus Diggle",
+      "label": "Dedalus Diggle",
+      "type": "person",
+      "cluster": "cluster_person_16"
+    },
+    {
+      "id": "Voldemort",
+      "label": "Voldemort",
+      "type": "person",
+      "cluster": "cluster_person_13"
+    },
+    {
+      "id": "You-Know-Who",
+      "label": "You-Know-Who",
+      "type": "person",
+      "cluster": "cluster_person_13"
+    },
+    {
+      "id": "Privet Drive",
+      "label": "Privet Drive",
+      "type": "location",
+      "cluster": "cluster_location_17"
+    },
+    {
+      "id": "Grunnings",
+      "label": "Grunnings",
+      "type": "organization",
+      "cluster": "cluster_organization_22"
+    },
+    {
+      "id": "Kent",
+      "label": "Kent",
+      "type": "location",
+      "cluster": "cluster_location_20"
+    },
+    {
+      "id": "Yorkshire",
+      "label": "Yorkshire",
+      "type": "location",
+      "cluster": "cluster_location_20"
+    },
+    {
+      "id": "Dundee",
+      "label": "Dundee",
+      "type": "location",
+      "cluster": "cluster_location_20"
+    },
+    {
+      "id": "Godric's Hollow",
+      "label": "Godric's Hollow",
+      "type": "location",
+      "cluster": "cluster_location_17"
+    },
+    {
+      "id": "Bristol",
+      "label": "Bristol",
+      "type": "location",
+      "cluster": "cluster_location_20"
+    },
+    {
+      "id": "London Underground",
+      "label": "London Underground",
+      "type": "location",
+      "cluster": "cluster_location_15"
+    },
+    {
+      "id": "Put-Outer",
+      "label": "Put-Outer",
+      "type": "object",
+      "cluster": "cluster_object_23"
+    },
+    {
+      "id": "Muggles",
+      "label": "Muggles",
+      "type": "concept",
+      "cluster": "cluster_concept_27"
+    },
+    {
+      "id": "owls",
+      "label": "owls",
+      "type": "concept",
+      "cluster": "cluster_concept_29"
+    },
+    {
+      "id": "shooting stars",
+      "label": "shooting stars",
+      "type": "event",
+      "cluster": "cluster_event_29"
+    },
+    {
+      "id": "motorcycle",
+      "label": "motorcycle",
+      "type": "object",
+      "cluster": "cluster_object_26"
+    },
+    {
+      "id": "lightning bolt scar",
+      "label": "lightning bolt scar",
+      "type": "object",
+      "cluster": "cluster_object_23"
+    },
+    {
+      "id": "lemon drops",
+      "label": "lemon drops",
+      "type": "object",
+      "cluster": "cluster_object_28"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Mr. Dursley",
+      "target": "Grunnings",
+      "relation": "EMPLOYED_BY"
+    },
+    {
+      "source": "Mr. Dursley",
+      "target": "Mrs. Dursley",
+      "relation": "HAS_SPOUSE"
+    },
+    {
+      "source": "Mrs. Dursley",
+      "target": "Lily Potter",
+      "relation": "HAS_SIBLING"
+    },
+    {
+      "source": "Dudley Dursley",
+      "target": "Mr. Dursley",
+      "relation": "HAS_PARENT"
+    },
+    {
+      "source": "Dudley Dursley",
+      "target": "Mrs. Dursley",
+      "relation": "HAS_PARENT"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "James Potter",
+      "relation": "HAS_PARENT"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "Lily Potter",
+      "relation": "HAS_PARENT"
+    },
+    {
+      "source": "Voldemort",
+      "target": "James Potter",
+      "relation": "KILLS"
+    },
+    {
+      "source": "Voldemort",
+      "target": "Lily Potter",
+      "relation": "KILLS"
+    },
+    {
+      "source": "Voldemort",
+      "target": "Harry Potter",
+      "relation": "ATTEMPTS_TO_KILL"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "lightning bolt scar",
+      "relation": "POSSESSES"
+    },
+    {
+      "source": "Professor McGonagall",
+      "target": "owls",
+      "relation": "BECOMES"
+    },
+    {
+      "source": "Albus Dumbledore",
+      "target": "Put-Outer",
+      "relation": "UTILIZES"
+    },
+    {
+      "source": "Sirius Black",
+      "target": "motorcycle",
+      "relation": "POSSESSES"
+    },
+    {
+      "source": "Hagrid",
+      "target": "motorcycle",
+      "relation": "TEMPORARILY_POSSESSES"
+    },
+    {
+      "source": "Dedalus Diggle",
+      "target": "shooting stars",
+      "relation": "CREATES"
+    },
+    {
+      "source": "Mr. Dursley",
+      "target": "Privet Drive",
+      "relation": "RESIDES_AT"
+    },
+    {
+      "source": "Voldemort",
+      "target": "You-Know-Who",
+      "relation": "EQUALS"
+    },
+    {
+      "source": "Harry Potter",
+      "target": "Privet Drive",
+      "relation": "TRANSFERS_TO"
+    },
+    {
+      "source": "Albus Dumbledore",
+      "target": "Hagrid",
+      "relation": "HAS_CONFIDENCE_IN"
+    },
+    {
+      "source": "Petunia Dursley",
+      "target": "Mrs. Dursley",
+      "relation": "EQUALS"
+    },
+    {
+      "source": "Muggles",
+      "target": "owls",
+      "relation": "OBSERVES"
+    },
+    {
+      "source": "Muggles",
+      "target": "shooting stars",
+      "relation": "OBSERVES"
+    },
+    {
+      "source": "Lily Potter",
+      "target": "Godric's Hollow",
+      "relation": "RESIDES_AT"
+    },
+    {
+      "source": "James Potter",
+      "target": "Godric's Hollow",
+      "relation": "RESIDES_AT"
+    }
+  ]
+}
