@@ -128,6 +128,10 @@ class TestCaseSpec(BaseModel):
     test_code: str = Field(..., description="The actual test code")
     expected_result: str = Field(..., description="Expected outcome")
 
+class TestCaseSpecList(BaseModel):
+    """Container for list of test case specifications"""
+    test_specs: list[TestCaseSpec]
+
 def generate_test_cases(description: str, test_context: list[str]) -> list[TestCase]:
     """Generates test cases for the module"""
     try:
@@ -143,10 +147,10 @@ def generate_test_cases(description: str, test_context: list[str]) -> list[TestC
                 4. Integration scenarios"""},
                 {"role": "user", "content": f"Module Description: {description}\nTest Context:\n" + "\n".join(test_context or [])}
             ],
-            response_format=list[TestCaseSpec],
+            response_format=TestCaseSpecList,
         )
         
-        test_specs = test_specs_completion.choices[0].message.parsed
+        test_specs = test_specs_completion.choices[0].message.parsed.test_specs
         
         # Convert test specs to TestCase objects
         test_cases = []
@@ -184,13 +188,22 @@ class ExportSpec(BaseModel):
     classes: list[str] = Field(..., description="Names of classes to export")
     default: str = Field(..., description="Name of the default export")
 
+class MainFunctionParam(BaseModel):
+    """Specification for a main function parameter"""
+    name: str = Field(..., description="Name of the parameter")
+    type: str = Field(..., description="Type of the parameter")
+    description: str = Field(..., description="Description of the parameter")
+
 class MainFunctionSpec(BaseModel):
     """Specification for the main function"""
     name: str = Field(..., description="Name of the main function")
-    params: list[dict] = Field(..., description="List of parameters with name, type, and description")
+    params: list[MainFunctionParam] = Field(..., description="List of parameters")
     return_type: str = Field(..., description="Return type of the function")
     description: str = Field(..., description="Function description")
     implementation: str = Field(..., description="Implementation steps in Python code")
+
+class ModuleName(BaseModel):
+    name: str = Field(..., description="Name of the module")
 
 def generate_module_exports(
     main_function_name: str,
@@ -235,7 +248,7 @@ def generate_main_function(description: str) -> str:
         
         # Generate the function code
         params_str = ", ".join(
-            f"{p['name']}: {p['type']}" + (f" = {p.get('default', 'None')}" if p.get('default') else "")
+            f"{p.name}: {p.type}"
             for p in main_spec.params
         )
         
@@ -262,6 +275,10 @@ class SupportingFunctionSpec(BaseModel):
     description: str = Field(..., description="Function description")
     implementation: str = Field(..., description="Implementation steps in Python code")
 
+class SupportingFunctionSpecList(BaseModel):
+    """Container for list of supporting function specifications"""
+    function_specs: list[SupportingFunctionSpec]
+
 class HTMLTemplateSpec(BaseModel):
     """Specification for HTML template"""
     title: str = Field(..., description="Title for the webpage")
@@ -287,10 +304,10 @@ def generate_supporting_functions(description: str, test_cases: list[TestCase]) 
                 {chr(10).join(f'- {test.name}: {test.description}' for test in test_cases)}
                 """}
             ],
-            response_format=list[SupportingFunctionSpec],
+            response_format=SupportingFunctionSpecList,
         )
         
-        func_specs = func_specs_completion.choices[0].message.parsed
+        func_specs = func_specs_completion.choices[0].message.parsed.function_specs
         
         # Generate function code for each specification
         functions = []
@@ -534,7 +551,7 @@ def generate_module_name(name: str = None, description: str = None) -> str:
             
         # Generate name from description if not provided
         if not name and description:
-            name_completion = client.beta.chat.completions.create(
+            name_completion = client.beta.chat.completions.parse(
                 model="gpt-4o-2024-08-06",
                 messages=[
                     {"role": "system", "content": """Generate a concise snake_case name for this module.
@@ -545,9 +562,10 @@ def generate_module_name(name: str = None, description: str = None) -> str:
                     4. Not include generic terms like 'module' or 'generator'
                     Return only the name, nothing else."""},
                     {"role": "user", "content": description}
-                ]
+                ],
+                response_format=ModuleName,
             )
-            name = name_completion.choices[0].message.content.strip()
+            name = name_completion.choices[0].message.parsed.name
         
         if not name:
             name = "generated_module"
